@@ -22,6 +22,10 @@ This will install all of the required packages listed in the requirements.txt fi
 
 How do I run ths code?
 
+# Design
+Figma URL
+screenshots
+
 # Contributing
 The code is held in the repo <repo url>
 All updates should be made to a branch and be peer checked, tested and documentation updated prior to merging the update branch with the master branch.
