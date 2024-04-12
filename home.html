@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Details</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Audit Details</h1>
+    <h2>This application is to be used to standardised telephone numbers (MSISDNs) ready for cross checking.
+      This application also enrches the MSISDNs with meta data for further filtering.
+    </h2>
+<div class="container">
+  <div class="section">
+    <h3>Username</h3>
+    <div class="box-container">
+      <textarea class="text-box" id="tbx_user" placeholder="username"></textarea>
+    </div>
+  </div>
+  <div class="section">
+    <h3>Task Number</h3>
+    <div class="box-container">
+      <textarea class="text-box" id="tbx_task" placeholder="task"></textarea>
+    </div>
+  </div>
+  <div class="section">
+    <button class="button" onclick="validateAndNavigate()">Go to Index Page</button>
+    <!-- <a href="index.html" class="button">Go to Index Page</a> -->
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

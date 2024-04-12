@@ -7,3 +7,14 @@ function StandardiseNumbers() {
   URL - https://github.com/google/libphonenumber
   */
 }
+
+function validateAndNavigate() {
+  var auditBtn1 = document.getElementById("tbx_user").value.trim();
+  var auditBtn2 = document.getElementById("tbx_task").value.trim();
+
+  if (auditBtn1 === "" || auditBtn2 === "") {
+    alert("Please fill in both task boxes for audit purposes.");
+  } else {
+    window.location.href = "index.html";
+  }
+}
