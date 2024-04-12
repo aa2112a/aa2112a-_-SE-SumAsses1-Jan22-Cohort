@@ -1,4 +1,83 @@
 body {
-    font-family: Verdana;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
   }
- 
+
+  h1 {
+    font-size: 64px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0%;
+    text-align:center;
+  }
+  
+  h2 {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0%;
+    text-align: center;
+    width: 900px; 
+    margin: auto;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0%;
+    text-align:center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .text-box {
+    width: 1120px;
+    height: 90px;
+    background-color: #D9D9D9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0px 4px 4px #000000;
+    margin: 10px;
+    padding: 25px;
+    resize: vertical;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #D9D9D9;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #007bff;
+  }
+  
