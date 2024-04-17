@@ -6,9 +6,15 @@ function StandardiseNumbers() {
   the results are then formatted and output the output text box
   URL - https://github.com/google/libphonenumber
   */
-}
+ }
 
 function validateAndNavigate() {
+  /*
+  This function checks the contents of the 2 audit text boxes to ensure neiher are empty
+  The function does not check the validity of the text input
+  If the text boxes pass the test then the user will navigate to the index page, ese an error will be shown
+  */
+
   var auditBtn1 = document.getElementById("tbx_user").value.trim();
   var auditBtn2 = document.getElementById("tbx_task").value.trim();
 
@@ -18,3 +24,29 @@ function validateAndNavigate() {
     window.location.href = "index.html";
   }
 }
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  const outputTextarea = document.getElementById('inputText');
+
+  reader.onload = function(e) {
+    const contents = e.target.result;
+    const rows = contents.split('\n');
+    const columnData = [];
+
+    // Assuming the column index you want to extract is 0 (first column)
+    const columnIndex = 0;
+
+    rows.forEach(function(row) {
+      const columns = row.split(',');
+      if (columns.length > columnIndex) {
+        columnData.push(columns[columnIndex].trim());
+      }
+    });
+
+    outputTextarea.innerHTML = columnData.join('\n');
+  };
+
+  reader.readAsText(file);  
+});

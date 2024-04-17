@@ -4,10 +4,20 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MSISDN Standardiser</title>
       <link rel="stylesheet" href="styles.css">
-      <title>MSISDN standardiser</title>
   </head>
 <body>
   <h1>MSISDN standardiser</h1>
 </body>
+<div class="container2">
+  <input type="file" class = "buttin" id="fileInput">
+    <textarea class = "text-box" id="inputText" placeholder="Enter strings delimited by newline"></textarea>
+    <button class = "button" onclick="StandardiseNumbers()">Submit</button>
+    <textarea class = "text-box" id="outputText" readonly placeholder="Parsed strings will appear here"></textarea>
+</div>
+<script src="script.js"></script>
+
+
+
 </html>
