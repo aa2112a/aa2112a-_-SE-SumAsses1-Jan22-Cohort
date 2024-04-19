@@ -8,16 +8,13 @@
       <link rel="stylesheet" href="styles.css">
   </head>
 <body>
-  <h1>MSISDN standardiser</h1>
+  <h1>MSISDN Standardiser</h1>
 </body>
 <div class="container2">
-  <input type="file" class = "buttin" id="fileInput">
-    <textarea class = "text-box" id="inputText" placeholder="Enter strings delimited by newline"></textarea>
-    <button class = "button" onclick="StandardiseNumbers()">Submit</button>
+    <button class = "button" onclick="handleFile()">Upload CSV</button>
+    <textarea class = "text-box" id="inputText" placeholder="Enter strings delimited by newline, or upload a .csv"></textarea>
+    <button class = "button" onclick="processMSISDNS()">Submit</button>
     <textarea class = "text-box" id="outputText" readonly placeholder="Parsed strings will appear here"></textarea>
 </div>
 <script src="script.js"></script>
-
-
-
 </html>

@@ -1,12 +1,17 @@
-function StandardiseNumbers() {
-  /* 
-  This function standarsises numbers using googles libphonenumber library
-  The function takes a list of input telephone numbers standardises the numbers to E146 format
-  then the phone numbers are enriched with other data
-  the results are then formatted and output the output text box
-  URL - https://github.com/google/libphonenumber
-  */
- }
+function StandardiseMSISDNs(inputMSISDN) {
+
+  var inputMsisdns = document.getElementById("inputText").value.trim();
+  console.log(inputMsisdns)
+  const outputTextarea = document.getElementById('outputText');
+  const lines = outputTextarea.split('\n');
+
+  outputTextarea.value = lines.join('\n');
+  // if (typeof inputMSISDN === 'string')
+  //   {return inputMSISDN}
+  // else
+  //   {throw new Error('test');}
+  }
+
 
 function validateAndNavigate() {
   /*
@@ -25,28 +30,31 @@ function validateAndNavigate() {
   }
 }
 
-document.getElementById('fileInput').addEventListener('change', function(event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  const outputTextarea = document.getElementById('inputText');
+function handleFile() {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.csv';
+  
+  fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const outputTextarea = document.getElementById('inputText');
 
-  reader.onload = function(e) {
-    const contents = e.target.result;
-    const rows = contents.split('\n');
-    const columnData = [];
+    if (file) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+        const content = event.target.result;
+        const lines = content.split('\n');
+        outputTextarea.value = lines.join('\n');
+      };
 
-    // Assuming the column index you want to extract is 0 (first column)
-    const columnIndex = 0;
+      reader.readAsText(file);
+    } else {
+      alert('Please select a file.');
+    }
+  });
+  
+  fileInput.click();
+}
 
-    rows.forEach(function(row) {
-      const columns = row.split(',');
-      if (columns.length > columnIndex) {
-        columnData.push(columns[columnIndex].trim());
-      }
-    });
-
-    outputTextarea.innerHTML = columnData.join('\n');
-  };
-
-  reader.readAsText(file);  
-});
+module.exports = StandardiseMSISDNs;
