@@ -4,19 +4,16 @@ function StandardiseMSISDNs(inputMSISDN) {
   if (typeof inputMSISDN === 'string') 
     {var processingMsisdn = inputMSISDN.replace(/^0{3}|^0{2}/, '0')}
   else
-    {console.log("ERROR1")
-      throw new Error('input is not a string');}  
+    {throw new Error('input is not a string');}  
 
   if (inputMSISDN.length === 10 && inputMSISDN.startsWith('7'))
     {console.log("adding leading zero")
       processingMsisdn = '0' + inputMSISDN}
 
   if (processingMsisdn.length <= 7)
-    {console.log("Run1")
-      return (inputMSISDN + ' is not a valid msisdn (Reason: short length')}
+    {return (inputMSISDN + ' is not a valid msisdn (Reason: short length')}
   else if (processingMsisdn.length >= 14)
-    {console.log("Run2")
-      return (inputMSISDN + ' is not a valid msisdn (Reason: long length')}
+    {return (inputMSISDN + ' is not a valid msisdn (Reason: long length')}
   else {
     if (processingMsisdn.length === 11 && processingMsisdn.startsWith('07'))
     {console.log("adding uk suffix")
@@ -27,7 +24,6 @@ function StandardiseMSISDNs(inputMSISDN) {
     }
   }
 
-  console.log("Run3")
   return processingMsisdn
 }
 
@@ -52,6 +48,18 @@ for (var i = 0; i < msisdnList.length; i++) {
   console.log(processedMsisdns)
   outputTextarea.value = processedMsisdns.join('\n');
 
+}
+
+function copyToClipboard() {
+  // Get the text from the textbox
+  var outputTextarea = document.getElementById("outputText");
+  outputTextarea.select();
+  
+  // Copy the selected text to the clipboard
+  document.execCommand("copy");
+
+  // Deselect the text
+  window.getSelection().removeAllRanges();
 }
 
 module.exports = StandardiseMSISDNs;
