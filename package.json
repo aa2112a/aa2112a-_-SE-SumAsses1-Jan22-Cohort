@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest"
   },
+  
   "git repository": {
     "type": "git",
     "url": "git+https://github.com/aa2112a/aa2112a-_-SE-SumAsses1-Jan22-Cohort.git"

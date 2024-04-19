@@ -1,17 +1,60 @@
 function StandardiseMSISDNs(inputMSISDN) {
+  console.log("StdMsisdns is processing:" + inputMSISDN)
 
-  var inputMsisdns = document.getElementById("inputText").value.trim();
-  console.log(inputMsisdns)
-  const outputTextarea = document.getElementById('outputText');
-  const lines = outputTextarea.split('\n');
+  if (typeof inputMSISDN === 'string') 
+    {var processingMsisdn = inputMSISDN.replace(/^0{3}|^0{2}/, '0')}
+  else
+    {console.log("ERROR1")
+      throw new Error('input is not a string');}  
 
-  outputTextarea.value = lines.join('\n');
-  // if (typeof inputMSISDN === 'string')
-  //   {return inputMSISDN}
-  // else
-  //   {throw new Error('test');}
+  if (inputMSISDN.length === 10 && inputMSISDN.startsWith('7'))
+    {console.log("adding leading zero")
+      processingMsisdn = '0' + inputMSISDN}
+
+  if (processingMsisdn.length <= 7)
+    {console.log("Run1")
+      return (inputMSISDN + ' is not a valid msisdn (Reason: short length')}
+  else if (processingMsisdn.length >= 14)
+    {console.log("Run2")
+      return (inputMSISDN + ' is not a valid msisdn (Reason: long length')}
+  else {
+    if (processingMsisdn.length === 11 && processingMsisdn.startsWith('07'))
+    {console.log("adding uk suffix")
+    processingMsisdn = '+44' + processingMsisdn.substring(1);}
+    else{
+      console.log("adding non uk suffix")
+      processingMsisdn = '+' + processingMsisdn;
+    }
   }
 
+  console.log("Run3")
+  return processingMsisdn
+}
+
+function processMSISDNS() {
+
+  var inputMsisdns = document.getElementById("inputText").value.trim();
+  var processedMsisdns = [];
+  const outputTextarea = document.getElementById('outputText');
+  const msisdnList = inputMsisdns.split('\n');
+
+  console.log('Captured input list: ' + inputMsisdns)
+  console.log('split input list: ' + msisdnList)
+
+// Loop through each item in list x, pass it to function p, and add the output to list y
+for (var i = 0; i < msisdnList.length; i++) {
+  console.log('Processing a value (' + i + '): ' + msisdnList[i])
+    var result = StandardiseMSISDNs(msisdnList[i]); // Call function p with the current item
+  console.log('Processed to: ' + result)
+    processedMsisdns.push(result); // Add the result to list y
+}
+
+  console.log(processedMsisdns)
+  outputTextarea.value = processedMsisdns.join('\n');
+
+}
+
+module.exports = StandardiseMSISDNs;
 
 function validateAndNavigate() {
   /*
@@ -56,5 +99,3 @@ function handleFile() {
   
   fileInput.click();
 }
-
-module.exports = StandardiseMSISDNs;
