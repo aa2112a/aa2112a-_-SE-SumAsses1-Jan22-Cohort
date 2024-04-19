@@ -1,12 +1,60 @@
-function StandardiseNumbers() {
-  /* 
-  This function standarsises numbers using googles libphonenumber library
-  The function takes a list of input telephone numbers standardises the numbers to E146 format
-  then the phone numbers are enriched with other data
-  the results are then formatted and output the output text box
-  URL - https://github.com/google/libphonenumber
-  */
- }
+function StandardiseMSISDNs(inputMSISDN) {
+  console.log("StdMsisdns is processing:" + inputMSISDN)
+
+  if (typeof inputMSISDN === 'string') 
+    {var processingMsisdn = inputMSISDN.replace(/^0{3}|^0{2}/, '0')}
+  else
+    {console.log("ERROR1")
+      throw new Error('input is not a string');}  
+
+  if (inputMSISDN.length === 10 && inputMSISDN.startsWith('7'))
+    {console.log("adding leading zero")
+      processingMsisdn = '0' + inputMSISDN}
+
+  if (processingMsisdn.length <= 7)
+    {console.log("Run1")
+      return (inputMSISDN + ' is not a valid msisdn (Reason: short length')}
+  else if (processingMsisdn.length >= 14)
+    {console.log("Run2")
+      return (inputMSISDN + ' is not a valid msisdn (Reason: long length')}
+  else {
+    if (processingMsisdn.length === 11 && processingMsisdn.startsWith('07'))
+    {console.log("adding uk suffix")
+    processingMsisdn = '+44' + processingMsisdn.substring(1);}
+    else{
+      console.log("adding non uk suffix")
+      processingMsisdn = '+' + processingMsisdn;
+    }
+  }
+
+  console.log("Run3")
+  return processingMsisdn
+}
+
+function processMSISDNS() {
+
+  var inputMsisdns = document.getElementById("inputText").value.trim();
+  var processedMsisdns = [];
+  const outputTextarea = document.getElementById('outputText');
+  const msisdnList = inputMsisdns.split('\n');
+
+  console.log('Captured input list: ' + inputMsisdns)
+  console.log('split input list: ' + msisdnList)
+
+// Loop through each item in list x, pass it to function p, and add the output to list y
+for (var i = 0; i < msisdnList.length; i++) {
+  console.log('Processing a value (' + i + '): ' + msisdnList[i])
+    var result = StandardiseMSISDNs(msisdnList[i]); // Call function p with the current item
+  console.log('Processed to: ' + result)
+    processedMsisdns.push(result); // Add the result to list y
+}
+
+  console.log(processedMsisdns)
+  outputTextarea.value = processedMsisdns.join('\n');
+
+}
+
+module.exports = StandardiseMSISDNs;
 
 function validateAndNavigate() {
   /*
@@ -25,28 +73,29 @@ function validateAndNavigate() {
   }
 }
 
-document.getElementById('fileInput').addEventListener('change', function(event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  const outputTextarea = document.getElementById('inputText');
+function handleFile() {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.csv';
+  
+  fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const outputTextarea = document.getElementById('inputText');
 
-  reader.onload = function(e) {
-    const contents = e.target.result;
-    const rows = contents.split('\n');
-    const columnData = [];
+    if (file) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+        const content = event.target.result;
+        const lines = content.split('\n');
+        outputTextarea.value = lines.join('\n');
+      };
 
-    // Assuming the column index you want to extract is 0 (first column)
-    const columnIndex = 0;
-
-    rows.forEach(function(row) {
-      const columns = row.split(',');
-      if (columns.length > columnIndex) {
-        columnData.push(columns[columnIndex].trim());
-      }
-    });
-
-    outputTextarea.innerHTML = columnData.join('\n');
-  };
-
-  reader.readAsText(file);  
-});
+      reader.readAsText(file);
+    } else {
+      alert('Please select a file.');
+    }
+  });
+  
+  fileInput.click();
+}

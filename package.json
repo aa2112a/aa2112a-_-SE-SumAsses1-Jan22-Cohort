@@ -1,0 +1,24 @@
+{
+  "name": "aa2112a-_-se-sumasses1-jan22-cohort",
+  "version": "1.0.0",
+  "description": "What is this all about",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  
+  "git repository": {
+    "type": "git",
+    "url": "git+https://github.com/aa2112a/aa2112a-_-SE-SumAsses1-Jan22-Cohort.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aa2112a/aa2112a-_-SE-SumAsses1-Jan22-Cohort/issues"
+  },
+  "homepage": "https://github.com/aa2112a/aa2112a-_-SE-SumAsses1-Jan22-Cohort#readme",
+  "dependencies": {
+    "google-libphonenumber": "^3.2.34",
+    "jest": "^29.7.0"
+  }
+}
