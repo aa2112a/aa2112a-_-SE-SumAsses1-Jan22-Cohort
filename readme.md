@@ -5,14 +5,30 @@ This MVP web application will showcase the possibility of having webapp to stand
 # Table of Contents
 - [`Installation`](#Installation)
 - [`Usage`](#Usage)
+- [`Design`](#Design)
+- [`Planning`](#Planning)
+- [`Minimal Viable Product (MVP) development`](#MVP_Dev)
+- [`Testing`](#Testing)
 - [`Contributing`](#Contributing)
 - [`License`](#License)
+- [`Evaluation`](#Evaluation)
 
 # Installation
 This application consists of HTML and Javascript with static unit tests completed in a jest framework.
 
 # Usage
 The code can be run using github pages or cloning the repository in vscode and using live server extenstion to run the page.
+
+As a user upon initialising the web app the user will be met with a home page. This home page is for the user to record their username and the task number they are working on. The user cannot progress from this page without completing both of these boxes. Currently no validation is done on what is written in those boxes, nor is it captured anywahere for the MVP.
+
+Once the user has entered their username and relevant atsking number the user will be moved to the index page. This page allows the user to manually type out a list of new line separated MSISDNs, or click the import file button to load data from a .csv or .txt file. These file can only be single column currently. Once clicked and a file selected the data will be loaded to the input text box automatically.
+
+Once the input box has been completed, the user needs to click the standardise button, which will take the input box data and pass it to the standardser and return the results to the output box.
+
+From this point the user can copy the contents of the output box to a clipboard for use in other programmes.
+
+The main page features can be seen notated here:
+![index page](./resources/SS1.png)
 
 # Design
 The wire frame for the webapp was designed and prototyped in Figma. This allowed for the app to be designed and shown to customers, allowing for instant feedback around design and the flow of the app. Initially I had designed an app with separate input and results pages. Customer feedback from the design stage said this was unnecessary as they wanted to see the RAW and standardised together, but didnt want to export the RAW at the end. This allowed for a more streamlined codebase and less HTML pages. As the app becomes more complex, extra pages may be required.
@@ -33,7 +49,7 @@ This is the output for the app, a list of standardised numbers copied to clipboa
 # Planning
 This project was being developed using an agile framework using kanban. Kanban was chosen as I did not want a time scale, as would be required for a sprint, but needed to manage the tickets on the board. Kanban also allowed me to track the Work In Progress (WIP) and ensure too many tickets weren't being brought into the 'in progress' section of the board.
 
-# Minimal Viable Product (MVP) development
+# MVP_Dev
 
 # Testing
 
