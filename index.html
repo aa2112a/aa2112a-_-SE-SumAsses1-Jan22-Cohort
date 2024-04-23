@@ -1,21 +1,28 @@
 <!-- This file will contain the HTML code for displaying the webpage --> 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>MSISDN Standardiser</title>
-      <link rel="stylesheet" href="styles.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSISDN Standardiser</title>
+  <!-- Link css style sheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
   <h1>MSISDN Standardiser</h1>
 </body>
 <div class="container2">
-    <button class = "button" onclick="handleFile()">Upload CSV</button>
-    <textarea class = "text-box" id="inputText" placeholder="Enter strings delimited by newline, or upload a .csv"></textarea>
-    <button class = "button" onclick="processMSISDNS()">Submit</button>
-    <textarea class = "text-box" id="outputText" readonly placeholder="Parsed strings will appear here"></textarea>
-    <button class = "button" onclick="copyToClipboard()">Copy output to clipboard</button>
+  <!-- Button to activate function to ingest file data -->
+  <button class = "button" onclick="handleFile()">Upload file</button>
+  <!-- Text box to store/ enter msisdns for processing -->
+  <textarea class = "text-box" id="inputText" placeholder="Enter strings delimited by newline, or upload a .csv/.txt file and click process"></textarea>
+  <!-- Button to activate function to process msisdns -->
+  <button class = "button" onclick="processMSISDNS()">Process MSISDNs</button>
+  <!-- Text box to store processed msisdns -->
+  <textarea class = "text-box" id="outputText" readonly placeholder="Parsed strings will appear here"></textarea>
+  <!-- Button to copy contents of output box to clipboard -->
+  <button class = "button" onclick="copyToClipboard()">Copy output to clipboard</button>
 </div>
+ <!-- Import scripts -->
 <script src="script.js"></script>
 </html>
