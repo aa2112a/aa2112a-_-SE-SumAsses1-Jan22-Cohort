@@ -44,7 +44,7 @@ The home page which the user first hits allows them to record their username and
 ![home page](./resources/page1.png)
 
 This is the page where the user can type in a list of new line separated MSISDNs or ingest a single columned .csv or .txt file containing entities to be standardised.
-![index page](./resources/page1.png)
+![index page](./resources/page2.png)
 
 This is the output for the app, a list of standardised numbers copied to clipboard. The user can then paste these into a new system to perform a search.
 ![output](./resources/page3.png)
