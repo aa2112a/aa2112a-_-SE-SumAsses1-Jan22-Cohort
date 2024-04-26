@@ -10,16 +10,28 @@ function StandardiseMSISDNs(inputMSISDN) {
 
   // check MSISDN is of type string
   if (typeof inputMSISDN === 'string') 
+    {var processingMsisdn = inputMSISDN
+
+      // preprocessing step to remove the following characters "+", ",", ")", "(", " ", "-"
+      processingMsisdn = processingMsisdn.replace(/[\s,()\-\-+]/g, '')
+
     // remove '000' or '00' from the start of the MSISDN e.g 00031412345678 => 31412345678
-    {var processingMsisdn = inputMSISDN.replace(/^0{3}|^0{2}/, '0')}
+    if (processingMsisdn.startsWith('000'))
+    {processingMsisdn = processingMsisdn.substring(3)
+    console.log('removed 000: ' + processingMsisdn)}
+
+    if (processingMsisdn.startsWith('00'))
+    {processingMsisdn = processingMsisdn.substring(2)
+      console.log('removed 000: ' + processingMsisdn)}
+        console.log('processing complete ' + processingMsisdn)}
   else
     {throw new Error('input is not a string');}  // Error type not string
 
   // Check if MSISDN starts with '7' it is of length 10 then add preceeding 0 (UK mobile)
   // e.g 79123458 => 07912345678
-  if (inputMSISDN.length === 10 && inputMSISDN.startsWith('7'))
+  if (processingMsisdn.length === 10 && processingMsisdn.startsWith('7'))
     {console.log("adding leading zero")
-      processingMsisdn = '0' + inputMSISDN}
+      processingMsisdn = '0' + processingMsisdn}
 
   // check length of MSISDN is at least 7 digits, else it's rejected as a legitimate MSSIDN
   if (processingMsisdn.length <= 7)

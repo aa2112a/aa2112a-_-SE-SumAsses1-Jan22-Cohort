@@ -1,6 +1,6 @@
 # Introduction
 
-This Minimal Viable Product (MVP) web application will showcase the possibility of having a webapp to standardise MSISDNs (Telephone numbers) to the international E164 format (e.g. +447912345678) which is compatible with our other corporate system data standards. This is useful as we often recieve entities from sources where the entities have no common standard and thus can cause erros when checking corporate systems en-mass. This web app will ensure matching entites is done consistently with the highest chance of success and lower the rate of false negatives being hit due to inconsistent formatting.
+This Minimal Viable Product (MVP) web application, MSISDN Standardiser, will showcase the possibility of having a webapp which can standardise MSISDNs (Telephone numbers) (xref) to the international E164 format (xref) (e.g. +447912345678) which is compatible with our other corporate system data standards. This is useful as we often recieve large lists of entities from sources where the entities have no common standard and thus can cause erros when checking corporate systems en-mass. This web app will ensure entites are compared consistently, with the highest chance of success and lower the rate of false negatives due to inconsistent formatting.
 
 # Table of Contents
 - [`Installation`](#Installation)
@@ -17,18 +17,20 @@ This Minimal Viable Product (MVP) web application will showcase the possibility 
 This application consists of HTML, CSS, and Javascript with static unit tests completed in a jest framework.
 
 # Usage
-The code can be run using github pages or cloning the repository in vscode and using live server extenstion to run the page.
+The code can be run using github pages or cloning the repository in vscode and using the live server extenstion to run the page.
 
-As a user upon initialising the web app the user will be met with a home page. This home page is for the user to record their username and the task number they are working on. The user cannot progress from this page without completing both of these boxes. Currently no validation is done on what is written in those boxes, nor is it captured anywahere for the MVP.
+As a user, upon initialising the web app you will be met with a home page. This home page is for the user to record their username and the task number they are working on. The user cannot progress from this page without completing both of these boxes. Currently no validation is done on what is written in those boxes, nor is it captured anywhere for the MVP.
 
-Once the user has entered their username and relevant atsking number the user will be moved to the index page. This page allows the user to manually type out a list of new line separated MSISDNs, or click the import file button to load data from a .csv or .txt file. These file can only be single column currently. Once clicked and a file selected the data will be loaded to the input text box automatically.
+Once the user has entered their username and the relevant tasking number the user will be navigated to the index page. This page allows the user to either manually type out a list of, new line separated,MSISDNs, or click the import file button to load data from a .csv or .txt file. These file can only be single column currently. Once clicked and a file has been selected the data will be loaded to the input text box automatically.
 
-Once the input box has been completed, the user needs to click the standardise button, which will take the input box data and pass it to the standardser and return the results to the output box.
+Once MSISDNs have been input into the inputbox, the user needs to click the standardise button. This will take the data in the input box and pass the list to the processMsisdns function which will standardise the MSISDNs and output the results to the output box on the home page.
 
-From this point the user can copy the contents of the output box to a clipboard for use in other programmes.
+From this point the user can copy the contents of the output box to a clipboard for use in other programmes, by clcking the copy button.
 
 The main page features can be seen notated here:
 ![index page](./resources/SS1.png)
+
+The app can be tested using the testData.csv in the resources folder in the repository.
 
 # Design
 The requirements for the project were captured during an ideas capture meeting. This is where the product owner and key stake holders are brought together to draw up a list of key feature requirements for the project. These requirements are then catured in Github issues. These requirements indicated the user details and reason for use must be captured, followed by a way for the user to input entities for standardising, and then run the process followed by the ability to export the data.
@@ -44,7 +46,7 @@ The home page which the user first hits allows them to record their username and
 ![home page](./resources/page1.png)
 
 This is the page where the user can type in a list of new line separated MSISDNs or ingest a single columned .csv or .txt file containing entities to be standardised.
-![index page](./resources/page1.png)
+![index page](./resources/page2.png)
 
 This is the output for the app, a list of standardised numbers copied to clipboard. The user can then paste these into a new system to perform a search.
 ![output](./resources/page3.png)
